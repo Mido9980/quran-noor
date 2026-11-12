@@ -1,4 +1,4 @@
-const VER = 'noor-v1.0.3';
+const VER = 'noor-v1.0.4';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'i18n.js', 'manifest.json',
   'fonts/amiri-quran.woff2', 'fonts/cairo.woff2',

@@ -159,7 +159,8 @@
     hero.innerHTML = '<div class="txt">'
       + '<div class="kicker">' + t('khatma') + '</div>'
       + '<h3>' + (last ? t('surah_word') + ' ' + surahName(last.s) : t('today')) + '</h3>'
-      + '<p>' + (last ? t('verse_word') + ' ' + num(last.v) + ' • ' + t('last_read') : t('start')) + '</p>'
+      + '<p>' + (last ? t('verse_word') + ' ' + num(last.v) + ' • ' + t('last_read')
+        : num(114) + ' ' + t('surahs') + ' • ' + num(total()) + ' ' + t('verses_unit') + ' • ' + t('offline_ready')) + '</p>'
       + '<button class="cta">' + (last ? t('continue') : t('start')) + '<svg viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>'
       + '</div>' + ringSVG(pct);
     hero.querySelector('.cta').addEventListener('click', () => {
@@ -248,7 +249,7 @@
     const rng = rangeFor(kind, n);
     const m = APP.meta[rng.fromS - 1];
     const label = kind === 'surah' ? cleanName(m.ar) : (kind === 'juz' ? t('juz_word') + ' ' + num(n) : t('page_word') + ' ' + num(n));
-    setTop(label, kind === 'surah' ? (m.type === 'مكية' ? t('makkiya') : t('madaniya')) + ' • ' + num(m.verses) + ' ' + t('verses_unit') : surahName(rng.fromS) + ' → ' + surahName(rng.toS), true);
+    setTop(label, kind === 'surah' ? num(m.verses) + ' ' + t('verses_unit') : surahName(rng.fromS) + ' → ' + surahName(rng.toS), true);
     setTab('read');
 
     const v = $('#view');
@@ -292,6 +293,20 @@
     });
     if (kind === 'surah') {
       box.appendChild(el('div', 'end-note', '﴿ <b>' + t('surah_word') + ' ' + cleanName(m.ar) + '</b> ﴾'));
+      const nav = el('div', 'chips');
+      nav.style.justifyContent = 'center';
+      nav.style.flexWrap = 'wrap';
+      if (n > 1) {
+        const b = el('button', 'chip', '‹ ' + surahName(n - 1));
+        b.addEventListener('click', () => go('#/s/' + (n - 1)));
+        nav.appendChild(b);
+      }
+      if (n < 114) {
+        const b = el('button', 'chip', surahName(n + 1) + ' ›');
+        b.addEventListener('click', () => go('#/s/' + (n + 1)));
+        nav.appendChild(b);
+      }
+      box.appendChild(nav);
     }
     v.appendChild(box);
 
