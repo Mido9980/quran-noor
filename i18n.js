@@ -1,4 +1,4 @@
-/* نُور — واجهة متعددة اللغات */
+/* القرآن الكريم — واجهة متعددة اللغات */
 var I18N = {
   ar: {
     tagline:"القرآن الكريم", nav_home:"الرئيسية", nav_read:"المصحف", nav_saved:"المحفوظات", nav_settings:"الإعدادات",
@@ -12,7 +12,7 @@ var I18N = {
     offline_net:"محتاج إنترنت أول مرة", copy:"نسخ", copied:"تم النسخ", share:"مشاركة", play:"استماع",
     pause:"إيقاف", save_bm:"حفظ الآية", del_bm:"إزالة الحفظ", close:"إغلاق", juz_word:"الجزء",
     page_word:"صفحة", verse_word:"آية", sajda:"سجدة", quick:"وصول سريع", about:"عن التطبيق",
-    about_txt:"نُور: مصحف كامل بالخط العثماني يعمل بدون إنترنت، مع ترجمة بتسع لغات وتلاوة صوتية. النص العربي والتلاوة من مصادر موثوقة، والترجمة للتقريب لا تُغني عن التفسير.",
+    about_txt:"مصحف كامل بالخط العثماني يعمل بدون إنترنت، مع ترجمة بتسع لغات وتلاوة صوتية. النص العربي والتلاوة من مصادر موثوقة، والترجمة للتقريب لا تُغني عن التفسير.",
     clear:"تصفير التقدم", cleared:"تم التصفير", cancel:"إلغاء", net_needed:"التلاوة محتاجة إنترنت",
     loading:"بيحمّل…", error:"حصل خطأ في التحميل", retry:"إعادة المحاولة", all:"الكل",
     surah_word:"سورة", today:"اقرأ ولو آية", search_hint:"اكتب كلمة أو جزء منها", results:"نتائج"
@@ -29,7 +29,7 @@ var I18N = {
     offline_net:"Needs internet once", copy:"Copy", copied:"Copied", share:"Share", play:"Listen",
     pause:"Pause", save_bm:"Save verse", del_bm:"Remove save", close:"Close", juz_word:"Juz",
     page_word:"Page", verse_word:"Verse", sajda:"Prostration", quick:"Quick access", about:"About",
-    about_txt:"Noor: a complete Qur’an in Uthmani script that works offline, with translations in nine languages and audio recitation. Arabic text and recitation come from trusted sources; translations approximate meaning and do not replace tafsir.",
+    about_txt:"a complete Qur’an in Uthmani script that works offline, with translations in nine languages and audio recitation. Arabic text and recitation come from trusted sources; translations approximate meaning and do not replace tafsir.",
     clear:"Reset progress", cleared:"Progress cleared", cancel:"Cancel", net_needed:"Recitation needs internet",
     loading:"Loading…", error:"Failed to load", retry:"Retry", all:"All",
     surah_word:"Surah", today:"A verse a day", search_hint:"Type a word or part of it", results:"Results"
@@ -46,7 +46,7 @@ var I18N = {
     offline_net:"Нужен интернет один раз", copy:"Копировать", copied:"Скопировано", share:"Поделиться", play:"Слушать",
     pause:"Пауза", save_bm:"Сохранить аят", del_bm:"Удалить из избранного", close:"Закрыть", juz_word:"Джуз",
     page_word:"Страница", verse_word:"Аят", sajda:"Земной поклон", quick:"Быстрый доступ", about:"О приложении",
-    about_txt:"Noor: полный Коран османским письмом, работает без интернета, с переводами на девять языков и аудиочтением. Текст и чтение взяты из надёжных источников; перевод передаёт смысл приблизительно и не заменяет тафсир.",
+    about_txt:"полный Коран османским письмом, работает без интернета, с переводами на девять языков и аудиочтением. Текст и чтение взяты из надёжных источников; перевод передаёт смысл приблизительно и не заменяет тафсир.",
     clear:"Сбросить прогресс", cleared:"Прогресс сброшен", cancel:"Отмена", net_needed:"Для чтения нужен интернет",
     loading:"Загрузка…", error:"Ошибка загрузки", retry:"Повторить", all:"Все",
     surah_word:"Сура", today:"Аят на каждый день", search_hint:"Введите слово или его часть", results:"Результаты"
@@ -63,7 +63,7 @@ var I18N = {
     offline_net:"Internet requis une fois", copy:"Copier", copied:"Copié", share:"Partager", play:"Écouter",
     pause:"Pause", save_bm:"Enregistrer", del_bm:"Retirer", close:"Fermer", juz_word:"Juz",
     page_word:"Page", verse_word:"Verset", sajda:"Prosternation", quick:"Accès rapide", about:"À propos",
-    about_txt:"Noor : le Coran complet en écriture ottomane, utilisable hors ligne, avec traductions en neuf langues et récitation audio. Le texte et la récitation proviennent de sources reconnues ; la traduction est une approximation du sens et ne remplace pas le tafsir.",
+    about_txt:"le Coran complet en écriture ottomane, utilisable hors ligne, avec traductions en neuf langues et récitation audio. Le texte et la récitation proviennent de sources reconnues ; la traduction est une approximation du sens et ne remplace pas le tafsir.",
     clear:"Réinitialiser", cleared:"Progression effacée", cancel:"Annuler", net_needed:"La récitation nécessite Internet",
     loading:"Chargement…", error:"Échec du chargement", retry:"Réessayer", all:"Tout",
     surah_word:"Sourate", today:"Un verset par jour", search_hint:"Saisissez un mot ou une partie", results:"Résultats"
@@ -80,7 +80,7 @@ var I18N = {
     offline_net:"Einmal Internet nötig", copy:"Kopieren", copied:"Kopiert", share:"Teilen", play:"Anhören",
     pause:"Pause", save_bm:"Vers speichern", del_bm:"Entfernen", close:"Schließen", juz_word:"Dschuz",
     page_word:"Seite", verse_word:"Vers", sajda:"Niederwerfung", quick:"Schnellzugriff", about:"Über die App",
-    about_txt:"Noor: der vollständige Koran in osmanischer Schrift, offline nutzbar, mit Übersetzungen in neun Sprachen und Audiorezitation. Text und Rezitation stammen aus verlässlichen Quellen; Übersetzungen geben den Sinn annähernd wieder und ersetzen keinen Tafsir.",
+    about_txt:"der vollständige Koran in osmanischer Schrift, offline nutzbar, mit Übersetzungen in neun Sprachen und Audiorezitation. Text und Rezitation stammen aus verlässlichen Quellen; Übersetzungen geben den Sinn annähernd wieder und ersetzen keinen Tafsir.",
     clear:"Fortschritt löschen", cleared:"Fortschritt gelöscht", cancel:"Abbrechen", net_needed:"Rezitation braucht Internet",
     loading:"Lädt…", error:"Laden fehlgeschlagen", retry:"Erneut", all:"Alle",
     surah_word:"Sure", today:"Ein Vers pro Tag", search_hint:"Wort oder Wortteil eingeben", results:"Treffer"
@@ -97,7 +97,7 @@ var I18N = {
     offline_net:"Necesita internet una vez", copy:"Copiar", copied:"Copiado", share:"Compartir", play:"Escuchar",
     pause:"Pausa", save_bm:"Guardar aleya", del_bm:"Quitar", close:"Cerrar", juz_word:"Yuz",
     page_word:"Página", verse_word:"Aleya", sajda:"Postración", quick:"Acceso rápido", about:"Acerca de",
-    about_txt:"Noor: el Corán completo en escritura otomana, funciona sin conexión, con traducciones en nueve idiomas y recitación en audio. El texto y la recitación provienen de fuentes fiables; la traducción aproxima el sentido y no sustituye al tafsir.",
+    about_txt:"el Corán completo en escritura otomana, funciona sin conexión, con traducciones en nueve idiomas y recitación en audio. El texto y la recitación provienen de fuentes fiables; la traducción aproxima el sentido y no sustituye al tafsir.",
     clear:"Reiniciar progreso", cleared:"Progreso borrado", cancel:"Cancelar", net_needed:"La recitación necesita internet",
     loading:"Cargando…", error:"Error al cargar", retry:"Reintentar", all:"Todo",
     surah_word:"Sura", today:"Una aleya al día", search_hint:"Escribe una palabra o parte", results:"Resultados"
@@ -114,7 +114,7 @@ var I18N = {
     offline_net:"Bir kez internet gerekir", copy:"Kopyala", copied:"Kopyalandı", share:"Paylaş", play:"Dinle",
     pause:"Duraklat", save_bm:"Ayeti kaydet", del_bm:"Kaldır", close:"Kapat", juz_word:"Cüz",
     page_word:"Sayfa", verse_word:"Ayet", sajda:"Secde", quick:"Hızlı erişim", about:"Uygulama hakkında",
-    about_txt:"Noor: Osmanlı hattıyla tam Kur’an, çevrimdışı çalışır, dokuz dilde meal ve sesli tilavet içerir. Metin ve tilavet güvenilir kaynaklardandır; meal anlamı yaklaşık verir ve tefsirin yerini tutmaz.",
+    about_txt:"Osmanlı hattıyla tam Kur’an, çevrimdışı çalışır, dokuz dilde meal ve sesli tilavet içerir. Metin ve tilavet güvenilir kaynaklardandır; meal anlamı yaklaşık verir ve tefsirin yerini tutmaz.",
     clear:"İlerlemeyi sıfırla", cleared:"İlerleme silindi", cancel:"İptal", net_needed:"Tilavet için internet gerekir",
     loading:"Yükleniyor…", error:"Yükleme hatası", retry:"Tekrar dene", all:"Tümü",
     surah_word:"Sure", today:"Günde bir ayet", search_hint:"Bir kelime veya parçası yaz", results:"Sonuçlar"
@@ -131,7 +131,7 @@ var I18N = {
     offline_net:"Perlu internet sekali", copy:"Salin", copied:"Tersalin", share:"Bagikan", play:"Dengarkan",
     pause:"Jeda", save_bm:"Simpan ayat", del_bm:"Hapus", close:"Tutup", juz_word:"Juz",
     page_word:"Halaman", verse_word:"Ayat", sajda:"Sujud", quick:"Akses cepat", about:"Tentang",
-    about_txt:"Noor: Al-Qur’an lengkap dengan tulisan Utsmani, dapat digunakan offline, dilengkapi terjemahan sembilan bahasa dan murattal. Teks dan bacaan bersumber tepercaya; terjemahan hanya mendekati makna dan tidak menggantikan tafsir.",
+    about_txt:"Al-Qur’an lengkap dengan tulisan Utsmani, dapat digunakan offline, dilengkapi terjemahan sembilan bahasa dan murattal. Teks dan bacaan bersumber tepercaya; terjemahan hanya mendekati makna dan tidak menggantikan tafsir.",
     clear:"Reset progres", cleared:"Progres dihapus", cancel:"Batal", net_needed:"Murattal perlu internet",
     loading:"Memuat…", error:"Gagal memuat", retry:"Coba lagi", all:"Semua",
     surah_word:"Surah", today:"Satu ayat sehari", search_hint:"Ketik kata atau sebagiannya", results:"Hasil"
@@ -148,7 +148,7 @@ var I18N = {
     offline_net:"ایک بار انٹرنیٹ درکار", copy:"نقل کریں", copied:"نقل ہو گیا", share:"شیئر کریں", play:"سنیں",
     pause:"وقفہ", save_bm:"آیت محفوظ کریں", del_bm:"ہٹائیں", close:"بند کریں", juz_word:"پارہ",
     page_word:"صفحہ", verse_word:"آیت", sajda:"سجدہ", quick:"فوری رسائی", about:"ایپ کے بارے میں",
-    about_txt:"نُور: عثمانی رسم الخط میں مکمل قرآن، آف لائن چلتا ہے، نو زبانوں میں ترجمہ اور آواز میں تلاوت کے ساتھ۔ متن اور تلاوت مستند ذرائع سے ہیں؛ ترجمہ مفہوم کے قریب ہے اور تفسیر کا متبادل نہیں۔",
+    about_txt:"عثمانی رسم الخط میں مکمل قرآن، آف لائن چلتا ہے، نو زبانوں میں ترجمہ اور آواز میں تلاوت کے ساتھ۔ متن اور تلاوت مستند ذرائع سے ہیں؛ ترجمہ مفہوم کے قریب ہے اور تفسیر کا متبادل نہیں۔",
     clear:"پیش رفت صاف کریں", cleared:"پیش رفت صاف ہو گئی", cancel:"منسوخ", net_needed:"تلاوت کے لیے انٹرنیٹ درکار ہے",
     loading:"لوڈ ہو رہا ہے…", error:"لوڈ ناکام", retry:"دوبارہ کوشش", all:"سب",
     surah_word:"سورۃ", today:"روز ایک آیت", search_hint:"کوئی لفظ یا اس کا حصہ لکھیں", results:"نتائج"

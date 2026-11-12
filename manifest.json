@@ -1,7 +1,7 @@
 {
-  "name": "نُور — القرآن الكريم",
-  "short_name": "نُور",
-  "description": "مصحف كامل بالخط العثماني يعمل بدون إنترنت، مع ترجمة بتسع لغات وتلاوة صوتية.",
+  "name": "القرآن الكريم",
+  "short_name": "القرآن الكريم",
+  "description": "المصحف كامل بالخط العثماني يعمل بدون إنترنت، مع ترجمة بتسع لغات وتلاوة صوتية.",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "./index.html",
@@ -10,10 +10,29 @@
   "orientation": "portrait",
   "background_color": "#070b18",
   "theme_color": "#070b18",
-  "categories": ["books", "education", "lifestyle"],
+  "categories": [
+    "books",
+    "education",
+    "lifestyle"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

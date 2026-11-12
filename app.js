@@ -1,10 +1,11 @@
-/* ===== نُور — app ===== */
+/* ===== القرآن الكريم — app ===== */
 (function () {
   'use strict';
 
   const $ = (s, r = document) => r.querySelector(s);
   const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
   const LS = 'noor.v2';
+  const APP_NAME = 'القرآن الكريم';
   const DEFAULTS = {
     ui: 'ar', theme: 'night', fs: 30, lh: 2.05, showTr: true, trLang: 'ru',
     reciter: 'Alafasy_128kbps', last: null, bm: [], prog: {}, tab: 'home'
@@ -94,7 +95,7 @@
   }
   function applyStaticTexts() {
     $('#themeBtn').style.display = '';
-    $('#topTitle').textContent = 'نُور';
+    $('#topTitle').textContent = APP_NAME;
   }
 
   /* ---------- router ---------- */
@@ -149,7 +150,7 @@
     return Math.min(100, (n / total()) * 100);
   }
   function renderHome() {
-    setTop('نُور', t('tagline'));
+    setTop(APP_NAME, t('offline_ready'));
     setTab('home');
     const v = $('#view'); v.innerHTML = '';
     const pct = progressPct();
@@ -374,7 +375,7 @@
   function verseSheet(s, vn, text, trText) {
     const key = s + ':' + vn;
     const saved = S.bm.indexOf(key) >= 0;
-    const plain = text + '\n\n' + (trText || '') + '\n\n﴿ ' + surahName(s) + ' — ' + vn + ' ﴾\nنُور';
+    const plain = text + '\n\n' + (trText || '') + '\n\n﴿ ' + surahName(s) + ' — ' + vn + ' ﴾\n' + APP_NAME;
     openSheet(t('surah_word') + ' ' + surahName(s) + ' • ' + t('verse_word') + ' ' + vn, '', [
       { label: t('play'), icon: ICON.play, onClick: () => playVerse(s, vn) },
       { label: t('copy'), icon: ICON.copy, onClick: () => copy(plain) },
@@ -387,7 +388,7 @@
     else { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast(t('copied')); }
   }
   function shareV(txt) {
-    if (navigator.share) navigator.share({ title: 'نُور', text: txt }).catch(() => { });
+    if (navigator.share) navigator.share({ title: APP_NAME, text: txt }).catch(() => { });
     else copy(txt);
   }
   function toggleBm(key) {
@@ -642,10 +643,10 @@
     card([offRow, instRow, clearRow]);
 
     const about = el('div', 'card');
-    about.appendChild(row(icInfo, 'نُور — Noor', t('tagline'), null));
+    about.appendChild(row(icInfo, APP_NAME, t('tagline'), null));
     about.appendChild(el('div', '', '<p style="font-size:12.5px;line-height:1.9;color:var(--muted);font-weight:600;margin:4px 0 12px">' + t('about_txt') + '</p>'));
     v.appendChild(about);
-    const credit = el('div', 'end-note', 'EASY CODE • نُور v1.0');
+    const credit = el('div', 'end-note', 'EASY CODE • ' + APP_NAME + ' v1.1');
     v.appendChild(credit);
   }
 
