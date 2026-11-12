@@ -625,9 +625,9 @@
     ]);
 
     // offline + install
-    const offRow = row(icDl, t('offline_ready'), navigator.onLine ? t('offline_ready') : t('offline_net'), null);
+    const offRow = row(icDl, t('offline_ready'), num(114) + ' ' + t('surahs') + ' • ' + num(9) + ' ' + t('tr_lang'), null);
     const instRow = row(icDl, t('install'), '', (() => {
-      const b = el('button', 'chip', t('install'));
+      const b = el('button', 'chip', '↓');
       b.addEventListener('click', async () => {
         if (window.__bip) { window.__bip.prompt(); const r = await window.__bip.userChoice; if (r && r.outcome === 'accepted') toast(t('installed')); window.__bip = null; }
         else toast(t('install'));
@@ -635,7 +635,7 @@
       return b;
     })());
     const clearRow = row(icInfo, t('clear'), '', (() => {
-      const b = el('button', 'chip', t('clear'));
+      const b = el('button', 'chip', '⟲');
       b.addEventListener('click', () => { S.prog = {}; S.last = null; S.bm = []; save(); toast(t('cleared')); renderSettings(); });
       return b;
     })());
