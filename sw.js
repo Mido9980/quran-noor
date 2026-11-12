@@ -1,6 +1,8 @@
-const VER = 'quran-v1.1.0';
+const VER = 'quran-v1.1.1';
+const V = '1.1.1';
 const CORE = [
-  './', 'index.html', 'styles.css', 'app.js', 'i18n.js', 'manifest.json',
+  './', 'index.html', 'manifest.json',
+  'styles.css?v=' + V, 'app.js?v=' + V, 'i18n.js?v=' + V,
   'fonts/amiri-quran.woff2', 'fonts/cairo.woff2',
   'data/meta.json', 'data/index.json', 'data/ar.json', 'data/ru.json', 'data/en.json',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
@@ -27,29 +29,25 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // audio & external: network only
 
-  if (req.mode === 'navigate') {
-    e.respondWith(
-      fetch(req).catch(() => caches.match('index.html').then(r => r || caches.match('./')))
-    );
-    return;
-  }
+  const isStatic = /\.json$|fonts\/|icons\//.test(url.pathname);
 
-  e.respondWith(
-    caches.match(req).then(hit => {
-      if (hit) {
-        // refresh in background for shell assets
-        if (!/\.json$/.test(url.pathname)) {
-          fetch(req).then(res => { if (res && res.ok) caches.open(VER).then(c => c.put(req, res.clone())); }).catch(() => {});
-        }
-        return hit;
-      }
-      return fetch(req).then(res => {
-        if (res && res.ok && (res.type === 'basic' || res.type === 'default')) {
-          const copy = res.clone();
-          caches.open(VER).then(c => c.put(req, copy)).catch(() => {});
-        }
-        return res;
-      });
-    })
-  );
+  // shell (html/js/css): network first so updates land immediately
+  const networkFirst = r => fetch(r).then(res => {
+    if (res && res.ok) {
+      const copy = res.clone();
+      caches.open(VER).then(c => c.put(r, copy)).catch(() => {});
+    }
+    return res;
+  }).catch(() => caches.match(r).then(hit => hit || caches.match('index.html')));
+
+  const cacheFirst = r => caches.match(r).then(hit => hit || fetch(r).then(res => {
+    if (res && res.ok) {
+      const copy = res.clone();
+      caches.open(VER).then(c => c.put(r, copy)).catch(() => {});
+    }
+    return res;
+  }));
+
+  if (req.mode === 'navigate') { e.respondWith(networkFirst(req)); return; }
+  e.respondWith(isStatic ? cacheFirst(req) : networkFirst(req));
 });
