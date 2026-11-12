@@ -1,5 +1,5 @@
-const VER = 'quran-v1.1.2';
-const V = '1.1.2';
+const VER = 'quran-v1.1.3';
+const V = '1.1.3';
 const CORE = [
   './', 'index.html', 'manifest.json',
   'styles.css?v=' + V, 'app.js?v=' + V, 'i18n.js?v=' + V,
@@ -18,11 +18,22 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== VER).map(k => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => k !== VER).map(k => caches.delete(k)));
+    await self.clients.claim();
+    // إكمال أي ملف ناقص في الكاش عشان الأوف لاين يشتغل كامل
+    try {
+      const c = await caches.open(VER);
+      await Promise.all(CORE.map(async u => {
+        try {
+          if (await c.match(u)) return;
+          const r = await fetch(u, { cache: 'reload' });
+          if (r && r.ok) await c.put(u, r);
+        } catch (_) { }
+      }));
+    } catch (_) { }
+  })());
 });
 
 self.addEventListener('fetch', e => {
