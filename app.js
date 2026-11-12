@@ -75,10 +75,32 @@
   /* ---------- data ---------- */
   async function loadText(code) {
     if (APP.texts[code]) return APP.texts[code];
-    const r = await fetch('data/' + code + '.json');
+    const url = 'data/' + code + '.json';
+    const r = await fetch(url);
     if (!r.ok) throw new Error('data');
-    APP.texts[code] = await r.json();
-    return APP.texts[code];
+    let j;
+    try {
+      j = await r.json();
+    } catch (e) {
+      // نسخة تالفة في الكاش: نمسحها ونجيبها من الشبكة من جديد
+      try {
+        if (window.caches) {
+          const keys = await caches.keys();
+          for (const k of keys) { const c = await caches.open(k); await c.delete(url); }
+        }
+      } catch (_) { }
+      const r2 = await fetch(url, { cache: 'reload' });
+      j = await r2.json();
+    }
+    APP.texts[code] = j;
+    return j;
+  }
+  function failBox(msg, retry) {
+    const v = $('#view');
+    v.innerHTML = '<div class="empty"><div class="ei"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v5M12 16v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>'
+      + '<p>' + msg + '</p><p style="margin-top:14px"><button class="chip" id="retryBtn">' + t('retry') + '</button></p></div>';
+    const b = $('#retryBtn');
+    if (b) b.addEventListener('click', () => { retry(); });
   }
   async function boot() {
     applyUI();
@@ -89,7 +111,7 @@
         fetch('data/index.json').then(r => r.json())
       ]);
       APP.meta = m; APP.index = ix;
-    } catch (e) { $('#view').innerHTML = '<div class="empty"><p>' + t('error') + '</p></div>'; return; }
+    } catch (e) { failBox(t('error'), () => location.reload()); return; }
     route();
     registerSW();
   }
@@ -256,7 +278,7 @@
     const v = $('#view');
     v.innerHTML = '<div class="skel" style="margin-top:16px"></div><div class="skel" style="margin-top:10px"></div><div class="skel" style="margin-top:10px"></div>';
     let arText;
-    try { arText = await loadText('ar'); } catch (e) { v.innerHTML = '<div class="empty"><p>' + t('error') + '</p></div>'; return; }
+    try { arText = await loadText('ar'); } catch (e) { failBox(t('error'), () => renderReader(n, targetVerse, kind)); return; }
 
     const verses = [];
     for (let s = rng.fromS; s <= rng.toS; s++) {
@@ -484,7 +506,11 @@
     if (q.length < 2) { out.innerHTML = ''; return; }
     out.innerHTML = '<div class="empty"><p>' + t('searching') + '</p></div>';
     let arData, trData = null;
-    try { arData = await loadText('ar'); } catch (e) { out.innerHTML = '<div class="empty"><p>' + t('error') + '</p></div>'; return; }
+    try { arData = await loadText('ar'); } catch (e) {
+      out.innerHTML = '<div class="empty"><p>' + t('error') + '</p><p style="margin-top:12px"><button class="chip" id="sRetry">' + t('retry') + '</button></p></div>';
+      const b = $('#sRetry'); if (b) b.addEventListener('click', () => doSearch(q, out));
+      return;
+    }
     if (S.showTr) { try { trData = await loadText(S.trLang); } catch (e) { } }
     const arN = normArr('ar', arData), trN = trData ? normArr(S.trLang, trData) : null;
     const hits = [];

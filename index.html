@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="القرآن الكريم">
-<link rel="stylesheet" href="styles.css?v=1.1.1">
+<link rel="stylesheet" href="styles.css?v=1.1.2">
 </head>
 <body>
 
@@ -78,7 +78,34 @@
   <button class="icon-btn" id="closePlayer" aria-label="إغلاق"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </div>
 
-<script src="i18n.js?v=1.1.1"></script>
-<script src="app.js?v=1.1.1"></script>
+<script>
+/* إنقاذ سريع: ?reset=1 يمسح كل الكاش ويعيد التحميل من جديد */
+(function () {
+  if (/[?&]reset/.test(location.search)) {
+    (async function () {
+      try { if ('serviceWorker' in navigator) { var rs = await navigator.serviceWorker.getRegistrations(); await Promise.all(rs.map(function (r) { return r.unregister(); })); } } catch (e) {}
+      try { if (window.caches) { var ks = await caches.keys(); await Promise.all(ks.map(function (k) { return caches.delete(k); })); } } catch (e) {}
+      location.replace(location.pathname + '#/home');
+    })();
+    return;
+  }
+})();
+</script>
+<script>
+/* لو الصفحة ما اشتغلتش خلال 5 ثواني، نظهر زر إنقاذ بدل الشاشة الفاضية */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    var v = document.getElementById('view');
+    if (v && v.children.length === 0) {
+      v.innerHTML = '<div style="text-align:center;padding:46px 20px;font-family:CairoUI,system-ui,sans-serif;color:#93a1c2">'
+        + '<p style="font-size:15px;font-weight:800;color:#e9eefc;margin:0 0 8px">التطبيق محتاج تحديث</p>'
+        + '<p style="font-size:13px;margin:0 0 18px">اضغط الزر لتحديث الملفات وتشغيله من جديد</p>'
+        + '<a href="?reset=1" style="display:inline-block;padding:13px 26px;border-radius:16px;background:#5eead4;color:#04211e;font-weight:800;text-decoration:none;font-size:14px">تحديث الآن</a></div>';
+    }
+  }, 5000);
+});
+</script>
+<script src="i18n.js?v=1.1.2"></script>
+<script src="app.js?v=1.1.2"></script>
 </body>
 </html>
